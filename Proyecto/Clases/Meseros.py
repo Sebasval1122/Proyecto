@@ -13,7 +13,7 @@ class Cuenta:
         self.menu = menu
         self.pedidos = []
         self.mesero = mesero
-    def agregar_pedido(self, elemento, cantidad):
+    def agregar_pedido(self, elemento, cantidad,mesero):
         self.mesero=str(input("Ingrese el nombre del mesero que atendio: "))
         if elemento in self.menu:
             total_elemento = self.menu[elemento] * cantidad
