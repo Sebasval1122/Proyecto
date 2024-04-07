@@ -1,5 +1,6 @@
 import Meseros
 import Mesas
+import Venta
 inscribir_mesero = input("¿Desea inscribir a un mesero? (Si/No): ")
 mesero = None
 if inscribir_mesero.lower() == "si":
@@ -18,13 +19,17 @@ if asignar_mesas.lower() == "si":
 print("Mesero inscrito:", mesero)
 menu = {"Perro": 10.000, "Sancocho": 15.000, "Frijoles": 15.000, "Casuela": 22.000, "Salchipapa": 12.000}
 cuenta = Meseros.Cuenta(menu, Meseros.Meserosquesetienen.meseros)
+analizador_ventas = Venta.AnalizadorVentas()
+cuenta = Meseros.Cuenta(menu, "Nombre del mesero")
 while True:
     print(menu)
     elemento_pedido = input("Ingrese qué comió el cliente (o escriba 'fin' para terminar): ")
-    if elemento_pedido.lower() == "fin" or elemento_pedido.lower() == "Fin":
+    if elemento_pedido.lower() == "fin":
         break
     cantidad_pedida = int(input(f"Ingrese cuántas veces se pidió '{elemento_pedido}': "))
-    print(Meseros.Meserosquesetienen.meseros)
     mesero = input("Ingrese el nombre del mesero que atendió: ")
+
     cuenta.agregar_pedido(elemento_pedido, cantidad_pedida, mesero)
+    analizador_ventas.agregar_venta(mesero, menu[elemento_pedido] * cantidad_pedida)
 cuenta.mostrar_cuenta()
+analizador_ventas.mostrar_ventas()
