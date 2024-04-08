@@ -1,6 +1,5 @@
 import random
 class Inscripcion:
-    @staticmethod
     def inscribir_mesero():
         nombre = input("Ingrese el nombre del mesero: ")
         id_mesero = int(input("Ingrese el ID del mesero: "))
